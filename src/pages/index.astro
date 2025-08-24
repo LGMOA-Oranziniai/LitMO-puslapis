@@ -8,9 +8,9 @@ import ExternalLink from '@components/ExternalLink.astro'
 import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-components'
 ---
 
-<DefaultLayout title="Home">
+<DefaultLayout title="Pradžia">
   <Hero />
-  <section class="my-64">
+  <!-- <section class="my-64">
     <div class="container">
       <h2 class="mb-16 text-6xl">Features</h2>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -45,17 +45,25 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
         </Feature>
       </div>
     </div>
-  </section>
-  <ContentMedia imgSrc="/accessible-components.webp">
-    <h2>Accessible components</h2>
-    <p class="text-2xl">
-      This theme provides plenty of tried and tested Accessible Astro Components. Some are native to this theme and a
-      lot of others are integrated using a <ExternalLink href="https://github.com/incluud/accessible-astro-components"
-        >separate package</ExternalLink
-      >. They'll get you up and running in building an accessible solution for your visitors.
-    </p>
-  </ContentMedia>
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
+  </section> -->
+    <section class="my-24">
+      <div class="container">
+        <h2 class="mb-12 text-6xl">Dalyvavimas</h2>
+        <p class="text-2xl mb-6">
+          Pirmasis etapas vyks nuotoliniu būdu <b>spalio 25 d.</b> Registracija jau atidaryta ir nuorodą galite rasti
+          <ExternalLink href="https://docs.google.com/forms/d/e/1FAIpQLSemrR3aHMSc3uhN8XsWXvDRGLRh0krxqPbUbW7J69l-riNDHg/viewform">čia.</ExternalLink>.
+        </p>
+        <p class="text-2xl mb-6">
+          Dalyvauti gali 9-12 kl. moksleiviai.
+          <span class="block">(Užduočių sunkumas ir sprendimo tempas yra pritaikyti 9-12 kl. moksleiviams, tačiau gali dalyvauti ir žemesnėje nei 9 klasėje esantys moksleiviai.)</span>
+        </p>
+        <p class="text-2xl">
+          Į antrąjį etapą kviečiama apie 50 moksleivių, geriausiai išsprendusių pirmojo etapo užduotis.
+          <span class="block">(Antrojo etapo, dalyvių maitinimas ir transportas iki renginio vietos bus finansuojamas renginio organizatorių.)</span>
+        </p>
+      </div>
+    </section>
+    <!-- <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
     <h2>WCAG 2.2 AA compliant</h2>
     <p class="text-2xl">
       Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
@@ -120,28 +128,25 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
         </Accordion>
       </div>
     </div>
-  </section>
-  <section class="my-64">
-    <div class="space-content container">
-      <h2 class="text-6xl">Our community</h2>
-      <p class="text-2xl">
-        We're a community of developers who are passionate about making the web more accessible. We're always looking
-        for new ways to improve the accessibility of the web.
-      </p>
-      <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-        <Avatar initials="RJ" title="Robert Johnson" subtitle="Manager" />
-        <Avatar initials="MT" title="Maria Torres" subtitle="Developer" />
-        <Avatar initials="AK" title="Alex Kim" subtitle="Designer" />
-        <Avatar initials="SL" title="Sarah Lee" subtitle="Content Strategist" />
-        <Avatar initials="JP" title="James Peterson" subtitle="QA Engineer" />
-        <Avatar initials="LW" title="Lisa Wong" subtitle="Product Owner" />
-        <Avatar initials="DM" title="David Martinez" subtitle="UX Researcher" />
-        <Avatar initials="EB" title="Emma Brown" subtitle="Accessibility Specialist" />
-        <Avatar initials="TC" title="Thomas Chen" subtitle="Frontend Developer" />
-      </AvatarGroup>
-    </div>
-  </section>
-  <section class="mt-64 mb-32">
+  </section> -->
+  <section class="my-24">
+      <div class="space-content container">
+    <h2 class="mb-8 text-6xl">Remėjai</h2>
+        <p class="text-2xl">Dėkojame mūsų remėjams, kurie suteikia galimybę įvykdyti šią olimpiadą.</p>
+        <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
+          <Avatar initials="RJ" title="Robert Johnson" />
+          <Avatar
+            img="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png"
+            title="Maria Torres"
+            subtitle="Developer"
+          />
+          <a href="https://www.example.com"
+            ><Avatar initials="Ak" title="Alex Kim" subtitle="Designer" size="lg" shape="square" /></a
+          >
+        </AvatarGroup>
+      </div>
+    </section>
+    <!-- <section class="mt-64 mb-32">
     <div class="container">
       <h2 class="mb-16 text-6xl">Impact in numbers</h2>
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
@@ -151,13 +156,13 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
         <Counter count="48+" title="Months" sub="Since launch" />
       </div>
     </div>
-  </section>
-</DefaultLayout>
+  </section> -->
 
-<style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
-  }
-</style>
+  <style>
+    .avatar {
+      border: 1px solid var(--border-color-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-s);
+    }
+  </style>
+</DefaultLayout>

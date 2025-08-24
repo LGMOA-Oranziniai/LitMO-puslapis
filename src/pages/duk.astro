@@ -1,0 +1,48 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+---
+
+<DefaultLayout
+  title="DUK"
+  description="Greita informacija apie medicinos olimpiadą."
+>
+  <PageHeader title="DUK" subtitle="Greita informacija apie medicinos olimpiadą.<br>Jei turite daugiau klausimų, nedvejodami kreipkitės paštu: <a href='mailto:litmo@olimpiados.lt'>litmo@olimpiados.lt</a>" bgType="bordered" />
+  <section class="my-12">
+    <div class="container">
+      <Accordion>
+        <AccordionItem name="exclusive" variant="chevron" title="Ar galiu dalyvauti, jei esu žemesnėje nei 9 klasėje?">
+          <p>
+            Taip, tačiau užduočių sunkumas ir sprendimo tempas yra pritaikyti 9-12 kl. moksleiviams.
+          </p>
+          <a href="#">#</a>
+        </AccordionItem>
+        <AccordionItem name="exclusive" variant="chevron" title="Jei pateksiu į antrąjį etapą, ar turėsiu atvykti savo lėšomis?">
+          <p>
+            Ne, patekus į antrąjį etapą, dalyvių maitinimas ir transportas iki renginio vietos bus finansuojamas renginio organizatorių.
+          </p>
+          <a href="#">#</a>
+        </AccordionItem>
+        <AccordionItem name="exclusive" variant="chevron" title="Ar bus atvirų klausimų?">
+          <p>
+            (Man nedavė atsakymo į šį klausimą)
+          </p>
+          <a href="#">#</a>
+        </AccordionItem>
+        <AccordionItem name="exclusive" variant="chevron" title="Ar tam, kad dalyvaut, galiu registruotis pats, ar reikia, kad užregistruotų mokykla?">
+          <p>
+            (Man nedavė atsakymo į šį klausimą)
+          </p>
+          <a href="#">#</a>
+        </AccordionItem>
+        <AccordionItem name="exclusive" variant="chevron" title="Ar klausimai labai sunkūs?">
+          <p>
+            (Man nedavė atsakymo į šį klausimą)
+          </p>
+          <a href="#">#</a>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  </section>
+</DefaultLayout>

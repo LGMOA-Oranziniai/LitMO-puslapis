@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
+import Logo from '@assets/img/LitMO.svg'
 
 /**
  * Hero Component
@@ -14,28 +15,41 @@ interface Props {
   src?: string
 }
 
-const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
+const { src }: Props = Astro.props
+const hasSrc = typeof src === 'string' && src.length > 0
 ---
 
-<section class="hero my-24">
+<section class="hero">
   <div class="container">
     <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Accessible</span> Starter for Astro</slot>
+          <slot>Lietuvos moksleivių <span class="text-gradient">medicinos</span> olimpiada</slot>
         </h1>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <a class="button has-icon" href="https://github.com/incluud/accessible-astro-starter">
-            <Icon name="lucide:star" />
-            Star on GitHub
+          <a class="button has-icon" href="/apie">
+            <Icon name="lucide:circle-question-mark" />
+            Apie
           </a>
-          <a class="button has-icon color-secondary" href="https://accessible-astro.incluud.dev/">
-            <Icon name="lucide:bookmark" />
-            Read the docs
+          <a class="button has-icon color-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSemrR3aHMSc3uhN8XsWXvDRGLRh0krxqPbUbW7J69l-riNDHg/viewform">
+            <Icon name="lucide:notebook-pen" />
+            Registruotis
           </a>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+    {hasSrc ? (
+        <Image
+          class="hidden lg:block"
+      src={src as string}
+          alt=""
+          decoding="async"
+          width={800}
+          height={600}
+          loading="eager"
+        />
+      ) : (
+        <Logo class="hidden lg:block" aria-hidden="true" />
+      )}
     </div>
   </div>
 </section>

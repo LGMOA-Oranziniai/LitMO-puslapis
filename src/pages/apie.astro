@@ -1,0 +1,14 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+
+const text = 'Lietuvos moksleivių medicinos olimpiada (LitMO) – medicinos žinių patikrinimo konkursas, skirtas suburti gabiausius Lietuvos moksleivius, skatinti jų akademinį tobulėjimą, domėjimąsi biomedicinos mokslais, padėti apsispręsti dėl studijų krypties.<br>Olimpiadą organizuoja grupė medicinos ir gyvybės mokslų studentų, priklausančių <a href="https://www.facebook.com/Oranziniai/">Lietuvos gamtos mokslų olimpiadų asociacijai – oranžiniams</a> – organizacijai, nuo 2002 m. besirūpinančiai Lietuvos gamtos olimpiadų vykdymu.<br>Olimpiadą sudaro du etapai. Pirmasis etapas vyksta nuotoliniu būdu, kurio metu mokiniai sprendžia 60 klausimų testą internetu. Į antrąjį etapą kviečiama apie 50 moksleivių, geriausiai išsprendusių pirmojo etapo užduotis.'
+---
+
+<DefaultLayout title="Apie" description="Apie Lietuvos moksleivių medicinos olimpiadą">
+  <PageHeader
+    title="Apie"
+    subtitle={text}
+    bgType="bordered"
+  />
+</DefaultLayout>

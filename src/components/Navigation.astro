@@ -42,14 +42,39 @@ import Logo from './Logo.astro'
       const mobileDesktopMenus = mainNav.querySelectorAll('nav > ul')
       const currentPathname = window.location.pathname
 
+      // Helper to normalize paths (ensure trailing slash except for root)
+      const normalizePath = (path: string): string => {
+        if (!path) return '/'
+        if (path === '/') return '/'
+        return path.endsWith('/') ? path : `${path}/`
+      }
+
+      const currentNormalized = normalizePath(currentPathname)
+
       mobileDesktopMenus.forEach((menu) => {
-        const menuItems = [...menu.querySelectorAll('a:not([rel*="external"])')] as HTMLAnchorElement[]
+        const menuItems = [...menu.querySelectorAll('a')] as HTMLAnchorElement[]
 
         menuItems.forEach((menuItem) => {
-          if (currentPathname.includes(menuItem.pathname.replaceAll('/', '')) && menuItem.textContent !== 'Home') {
-            menuItem.classList.add('is-active')
-            menuItem.setAttribute('aria-current', 'page')
-          } else if (menuItem.textContent === 'Home' && currentPathname === '/') {
+          // Only consider same-origin links
+          let itemUrl: URL
+          try {
+            itemUrl = new URL(menuItem.href, window.location.origin)
+          } catch {
+            return
+          }
+
+          if (itemUrl.origin !== window.location.origin) return
+
+          const itemPath = itemUrl.pathname
+          const itemNormalized = normalizePath(itemPath)
+
+          // Exact match for home; prefix match for other sections
+          const isHome = itemNormalized === '/'
+          const isActive = isHome
+            ? currentNormalized === '/'
+            : currentNormalized.startsWith(itemNormalized)
+
+          if (isActive) {
             menuItem.classList.add('is-active')
             menuItem.setAttribute('aria-current', 'page')
           }

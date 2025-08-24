@@ -48,6 +48,15 @@ interface Props {
 
 const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author } = Astro.props
 
+// Safely decode URL segments (handles percent-encoded non-ASCII characters)
+const safeDecode = (value: string): string => {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
+}
+
 // Sanitize subtitle HTML if present
 const sanitizedSubtitle: string = subtitle
   ? sanitizeHtml(subtitle, {
@@ -74,11 +83,12 @@ const sanitizedSubtitle: string = subtitle
 
           return (
             <Breadcrumbs>
-              <BreadcrumbsItem href="/" label="Home" />
+              <BreadcrumbsItem href="/" label="Pradžia" />
               {segments.map((segment, index) => {
                 const url = `/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1
-                const formattedName = segment
+                const decoded = safeDecode(segment)
+                const formattedName = decoded
                   .split('-')
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                   .join(' ')
