@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets"
+
+const {
+  class: className,
+  img,
+  height,
+  alt = "Sponsor logo"
+} = Astro.props
+
+// Normalize height
+const hNum = typeof height === 'string' ? parseInt(height, 10) : (typeof height === 'number' ? height : undefined)
+const cssHeight = typeof height === 'number' ? `${height}px` : (height ?? '150px')
+---
+<div class:list={["avatar", className]} style={`--logo-h: ${cssHeight}`}> 
+  <Image
+    src={img}
+    alt={alt}
+    height={hNum ?? 150}
+    loading="lazy"
+    decoding="async"
+    class="avatar__img"
+  />
+</div>
+
+<style>
+  .avatar {
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    min-block-size: var(--logo-h, 150px);
+    padding: var(--space-s, 0.75rem);
+    background: var(--surface-1, transparent);
+    border: 1px solid var(--border-color-subtle, #e5e7eb);
+    border-radius: var(--radius-md, 12px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .avatar {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .avatar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+  }
+
+  .avatar__img {
+    display: block;
+    max-inline-size: 100%;
+    max-block-size: calc(var(--logo-h, 150px) - 0.5rem);
+    block-size: auto;
+    margin-inline: auto;
+    object-fit: contain;
+    object-position: center;
+  mix-blend-mode: normal; /* avoid unintended blending on dark backgrounds */
+  position: relative; /* ensure it's above the ::before overlay */
+  z-index: 0;
+  }
+</style>

@@ -2,6 +2,7 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { Accordion, AccordionItem } from 'accessible-astro-components'
+import ExternalLink from '@components/ExternalLink.astro'
 ---
 
 <DefaultLayout
@@ -12,35 +13,30 @@ import { Accordion, AccordionItem } from 'accessible-astro-components'
   <section class="my-12">
     <div class="container">
       <Accordion>
-        <AccordionItem name="exclusive" variant="chevron" title="Ar galiu dalyvauti, jei esu žemesnėje nei 9 klasėje?">
+        <AccordionItem name="exclusive" variant="chevron" title="Ar galiu dalyvauti, jei esu jaunesnėje nei 9 klasėje?">
           <p>
             Taip, tačiau užduočių sunkumas ir sprendimo tempas yra pritaikyti 9-12 kl. moksleiviams.
           </p>
-          <a href="#">#</a>
         </AccordionItem>
         <AccordionItem name="exclusive" variant="chevron" title="Jei pateksiu į antrąjį etapą, ar turėsiu atvykti savo lėšomis?">
           <p>
             Ne, patekus į antrąjį etapą, dalyvių maitinimas ir transportas iki renginio vietos bus finansuojamas renginio organizatorių.
           </p>
-          <a href="#">#</a>
         </AccordionItem>
         <AccordionItem name="exclusive" variant="chevron" title="Ar bus atvirų klausimų?">
           <p>
-            (Man nedavė atsakymo į šį klausimą)
+            Tik <b>antrame</b> LitMO etape.
           </p>
-          <a href="#">#</a>
         </AccordionItem>
         <AccordionItem name="exclusive" variant="chevron" title="Ar tam, kad dalyvaut, galiu registruotis pats, ar reikia, kad užregistruotų mokykla?">
           <p>
-            (Man nedavė atsakymo į šį klausimą)
+            Registracija yra savarankiška ir moksleiviai gali registruotis patys <ExternalLink href="https://forms.gle/68un9hhzhYMXGumu8">čia.</ExternalLink>
           </p>
-          <a href="#">#</a>
         </AccordionItem>
         <AccordionItem name="exclusive" variant="chevron" title="Ar klausimai labai sunkūs?">
           <p>
-            (Man nedavė atsakymo į šį klausimą)
+            Kadangi LitMO yra medicinos žinių olimpiada, užduotys yra medicinos krypties, bet itin specifinių žinių nereikalauja.<span class="block"></span>Tačiau rekomenduojame papildomai pasimokyti iš nurodytų vadovėlių (žr. įrašą ,,Kaip pasiruošti LitMO”)<span/>
           </p>
-          <a href="#">#</a>
         </AccordionItem>
       </Accordion>
     </div>

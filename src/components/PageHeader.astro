@@ -1,5 +1,5 @@
 ---
-import { Avatar, Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
+import { Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
 import { Image } from 'astro:assets'
 import sanitizeHtml from 'sanitize-html'
 
@@ -32,13 +32,8 @@ interface Props {
    * @default undefined - Uses the default background color
    */
   /**
-   * The author of the page
-   */
-  author?: {
-    name: string
-    image: string
-    bio: string
-  }
+  * Background type for header
+  */
   bgType?: 'primary' | 'secondary' | 'neutral' | 'gradient' | 'bordered'
   /**
    * Whether to show the breadcrumbs
@@ -46,7 +41,7 @@ interface Props {
   showBreadcrumbs?: boolean
 }
 
-const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author } = Astro.props
+const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage } = Astro.props
 
 // Safely decode URL segments (handles percent-encoded non-ASCII characters)
 const safeDecode = (value: string): string => {
@@ -117,13 +112,6 @@ const sanitizedSubtitle: string = subtitle
       }
       <h1>{title}</h1>
       {sanitizedSubtitle && <p class="text-2xl" set:html={sanitizedSubtitle} />}
-      {
-        author && (
-          <div class="mt-6 flex items-center">
-            <Avatar title={author.name} image={author.image} subtitle={author.bio} />
-          </div>
-        )
-      }
     </div>
   </div>
 </section>
