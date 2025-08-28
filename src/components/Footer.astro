@@ -37,7 +37,7 @@ const currentYear = new Date().getFullYear()
       <div class="flex flex-col gap-4">
         <h3 class="text-2xl font-bold">Kontaktai</h3>
         <ul class="flex flex-col gap-2">
-          <li>Mums galite tiesiogiai rašyti paštu <a href="mailto:litmo@olimpiados.lt">litmo@olimpiados.lt</a></li>
+          <li>Mums galite tiesiogiai rašyti paštu <span class="text-gradient">litmo@olimpiados.lt</span></li>
         </ul>
       </div>
     </div>
@@ -57,6 +57,18 @@ const currentYear = new Date().getFullYear()
 </footer>
 
 <style>
+  .text-gradient {
+    background: linear-gradient(
+      315deg,
+      light-dark(var(--color-primary-300), var(--color-secondary-100)) 25%,
+      light-dark(var(--color-secondary-300), var(--color-primary-200))
+    );
+    
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   section {
     border-top: 1px solid var(--border-color-subtle);
   }
