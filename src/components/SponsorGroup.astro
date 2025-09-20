@@ -1,0 +1,104 @@
+---
+import SponsorImage from '@components/SponsorImage.astro'
+
+type Tier = 'Generaliniai rėmėjai' | 'Renginio partneriai' | 'Rėmėjai'
+
+interface SponsorItem {
+  href: string
+  img: any
+  alt?: string
+  tier?: Tier | string
+  height?: number | string
+}
+
+interface Props {
+  sponsors?: SponsorItem[]
+  order?: Tier[]
+  title?: string
+  description?: string
+}
+
+const defaultOrder: Tier[] = ['Generaliniai rėmėjai', 'Renginio partneriai', 'Rėmėjai']
+
+const {
+  sponsors = [],
+  order = defaultOrder,
+  title = 'Rėmėjai',
+  description = 'Dėkojame mūsų rėmėjams, kurie suteikia galimybę įvykdyti šią olimpiadą.',
+} = Astro.props as Props
+
+const lastTier = order[order.length - 1]
+
+// Build groups
+const groups: Record<string, SponsorItem[]> = {}
+for (const t of order) {
+  groups[t] = []
+}
+
+// Assign sponsors to groups
+for (const s of sponsors) {
+  let t = lastTier
+  if (s.tier && order.includes(s.tier as Tier)) {
+    t = s.tier as Tier
+  }
+  groups[t].push(s)
+}
+---
+
+<section class="space-content container">
+  <h2 class="text-6xl">{title}</h2>
+  {description && <p class="text-2xl">{description}</p>}
+
+  {
+    order.map((tier: Tier) =>
+      groups[tier]?.length ? (
+        <section class="sponsor-tier" data-tier={tier} aria-labelledby={`tier-${tier}`}>
+          <h3 id={`tier-${tier}`} class="tier-heading">
+            {tier}
+          </h3>
+          <div
+            class:list={[
+              'sponsor-grid',
+              tier === 'Generaliniai rėmėjai' && 'sponsor-grid--xl',
+              tier === 'Renginio partneriai' && 'sponsor-grid--lg',
+            ]}
+          >
+            {groups[tier].map((s) => (
+              <a href={s.href} target="_blank" rel="noopener noreferrer" class="sponsor-card">
+                <SponsorImage img={s.img} alt={s.alt} tier={tier} height={s.height} />
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null,
+    )
+  }
+</section>
+
+<style>
+  .space-content {
+    display: grid;
+  }
+
+  .tier-heading {
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  }
+
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    align-items: center;
+    gap: var(--space-l, 2rem);
+  }
+  .sponsor-grid--lg {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .sponsor-grid--xl {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .sponsor-card {
+    display: block;
+  }
+</style>

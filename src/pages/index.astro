@@ -1,16 +1,29 @@
 ---
-import { AvatarGroup } from 'accessible-astro-components'
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import ExternalLink from '@components/ExternalLink.astro'
-import SponsorImage from '@components/SponsorImage.astro'
+import SponsorGroup from '@components/SponsorGroup.astro'
 
 import sponsor1 from '@assets/images/sponsors/sponsor_amgen.png'
 import sponsor2 from '@assets/images/sponsors/sponsor_abbvie.png'
-import sponsor3 from '@assets/images/sponsors/sponsor_UK.png'
+import sponsor3 from '@assets/images/sponsors/sponsor_VU_MF.png'
 import sponsor4 from '@assets/images/sponsors/sponsor_abromiskiu.png'
 import sponsor5 from '@assets/images/sponsors/sponsor_sapiens.png'
-import sponsor6 from '@assets/images/sponsors/sponsor_VU_MF.png'
+import sponsor6 from '@assets/images/sponsors/sponsor_UK.png'
+
+const sponsorsList = [
+  { href: 'https://www.amgen.com/', img: sponsor1, alt: 'Amgen', tier: 'Generaliniai rėmėjai' },
+  { href: 'https://www.abbvie.com/', img: sponsor2, alt: 'AbbVie', tier: 'Generaliniai rėmėjai' },
+  {
+    href: 'https://www.mf.vu.lt/',
+    img: sponsor3,
+    alt: 'Vilniaus universiteto Medicinos fakultetas',
+    tier: 'Renginio partneriai',
+  },
+  { href: 'https://www.abromiskes.lt/', img: sponsor4, alt: 'Abromiškių reabilitacijos ligoninė', tier: 'Rėmėjai' },
+  { href: 'https://www.sapiens.lt/', img: sponsor5, alt: 'Sapiens', tier: 'Rėmėjai' },
+  { href: 'https://www.utenos-kolegija.lt/', img: sponsor6, alt: 'Utenos kolegija', tier: 'Rėmėjai' },
+]
 ---
 
 <DefaultLayout title="Pradžia">
@@ -23,36 +36,16 @@ import sponsor6 from '@assets/images/sponsors/sponsor_VU_MF.png'
         <ExternalLink href="https://forms.gle/68un9hhzhYMXGumu8">čia.</ExternalLink>.
       </p>
       <p class="mb-6 text-2xl">
-        Užduočių sunkumas ir sprendimo tempas yra pritaikyti 9-12 kl. moksleiviams, tačiau gali dalyvauti ir žemesnėje nei 9 klasėje esantys moksleiviai.
+        Užduočių sunkumas ir sprendimo tempas yra pritaikyti 9-12 kl. moksleiviams, tačiau gali dalyvauti ir žemesnėje
+        nei 9 klasėje esantys moksleiviai.
       </p>
       <p class="text-2xl">
         Antrojo etapo, dalyvių maitinimas ir transportas iki renginio vietos bus finansuojamas renginio organizatorių.
       </p>
     </div>
     <section class="my-24">
-      <div class="space-content container">
-        <h2 class="mb-8 text-6xl">Rėmėjai</h2>
-        <p class="text-2xl">Dėkojame mūsų rėmėjams, kurie suteikia galimybę įvykdyti šią olimpiadą.</p>
-        <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-          <a href="https://www.amgen.com/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor1} height="150px" alt="Amgen" />
-          </a>
-          <a href="https://www.abbvie.com/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor2} height="150px" alt="AbbVie" />
-          </a>
-          <a href="https://www.utenos-kolegija.lt/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor3} height="150px" alt="UK Sponsor" />
-          </a>
-          <a href="https://www.abromiskes.lt/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor4} height="150px" alt="Abromiškių reabilitacijos ligoninė" />
-          </a>
-          <a href="https://www.sapiens.lt/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor5} height="150px" alt="Sapiens" />
-          </a>
-          <a href="https://www.mf.vu.lt/" target="_blank" rel="noopener noreferrer">
-            <SponsorImage img={sponsor6} height="150px" alt="Vilniaus universiteto Medicinos fakultetas" />
-          </a>
-        </AvatarGroup>
+      <SponsorGroup sponsors={sponsorsList} />
+      <div class="my-8 container">
         <p class="text-2xl">
           Lietuvos moksleivių medicinos olimpiados organizavimas reikalauja finansinių bei kitų resursų ir išteklių, tad
           ieškome partnerių, kurie galėtų prisidėti prie šio renginio paramos.
@@ -72,12 +65,6 @@ import sponsor6 from '@assets/images/sponsors/sponsor_VU_MF.png'
           background-clip: border-box;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-        }
-
-        .avatar {
-          border: 1px solid var(--border-color-subtle);
-          border-radius: var(--radius-md);
-          padding: var(--space-s);
         }
       </style>
     </section>
