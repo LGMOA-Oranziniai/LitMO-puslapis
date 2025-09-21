@@ -4,28 +4,26 @@ import Hero from '@components/Hero.astro'
 import ExternalLink from '@components/ExternalLink.astro'
 import SponsorGroup from '@components/SponsorGroup.astro'
 
-import sponsor1 from '@assets/images/sponsors/sponsor_amgen.png'
-import sponsor2 from '@assets/images/sponsors/sponsor_abbvie.png'
-import sponsor3 from '@assets/images/sponsors/sponsor_VU_MF.png'
-import sponsor4 from '@assets/images/sponsors/sponsor_abromiskiu.png'
-import sponsor5 from '@assets/images/sponsors/sponsor_sapiens.png'
-import sponsor6 from '@assets/images/sponsors/sponsor_UK.png'
+import amgen from '@assets/images/sponsors/sponsor_amgen.png'
+import abbvie from '@assets/images/sponsors/sponsor_abbvie.png'
+import vuMf from '@assets/images/sponsors/sponsor_VU_MF.png'
+import abromiskiu from '@assets/images/sponsors/sponsor_abromiskiu.png'
+import sapiens from '@assets/images/sponsors/sponsor_sapiens.png'
+import uk from '@assets/images/sponsors/sponsor_UK.png'
+import lgmoa from '@assets/images/sponsors/sponsor_lgmoa.png'
+import biosa from '@assets/images/sponsors/sponsor_biosa.png'
 
 const sponsorsList = [
-  { href: 'https://www.amgen.com/', img: sponsor1, alt: 'Amgen', tier: 'Generaliniai rėmėjai' },
-  { href: 'https://www.abbvie.com/', img: sponsor2, alt: 'AbbVie', tier: 'Generaliniai rėmėjai' },
-  {
-    href: 'https://www.mf.vu.lt/',
-    img: sponsor3,
-    alt: 'Vilniaus universiteto Medicinos fakultetas',
-    tier: 'Renginio partneriai',
-  },
-  { href: 'https://www.abromiskes.lt/', img: sponsor4, alt: 'Abromiškių reabilitacijos ligoninė', tier: 'Rėmėjai' },
-  { href: 'https://www.sapiens.lt/', img: sponsor5, alt: 'Sapiens', tier: 'Rėmėjai' },
-  { href: 'https://www.utenos-kolegija.lt/', img: sponsor6, alt: 'Utenos kolegija', tier: 'Rėmėjai' },
+  { href: 'https://www.amgen.com/', img: amgen, alt: 'Amgen', tier: 'Generaliniai rėmėjai' },
+  { href: 'https://www.abbvie.com/', img: abbvie, alt: 'AbbVie', tier: 'Generaliniai rėmėjai' },
+  { href: 'https://www.mf.vu.lt/', img: vuMf, alt: 'Vilniaus universiteto Medicinos fakultetas', tier: 'Renginio partneriai' },
+  { href: 'https://www.abromiskes.lt/', img: abromiskiu, alt: 'Abromiškių reabilitacijos ligoninė', tier: 'Rėmėjai' },
+  { href: 'https://www.sapiens.lt/', img: sapiens, alt: 'Sapiens', tier: 'Rėmėjai' },
+  { href: 'https://www.utenos-kolegija.lt/', img: uk, alt: 'Utenos kolegija', tier: 'Rėmėjai' },
+  { href: 'https://lgmoa.lt/', img: lgmoa, alt: 'Lietuvos gamtos mokslų olimpiadų asociacija', tier: 'Renginio partneriai' },
+  { href: 'https://olimpiados.lt/straipsniai/prasideda-19-asis-biologu-sandraugos-sezonas', img: biosa, alt: 'Biosa - Biologų sandrauga', tier: 'Informaciniai partneriai' },
 ]
 ---
-
 <DefaultLayout title="Pradžia">
   <Hero />
   <section class="my-24">

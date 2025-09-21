@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
 
-type Tier = 'Generaliniai rėmėjai' | 'Renginio partneriai' | 'Rėmėjai'
+type Tier = 'Generaliniai rėmėjai' | 'Renginio partneriai' | 'Rėmėjai' | "Informaciniai partneriai"
 
 interface Props {
   img: ImageMetadata
@@ -13,9 +13,10 @@ interface Props {
 }
 
 const TIER_HEIGHT: Record<Tier, number> = {
-  'Generaliniai rėmėjai': 130,
-  'Renginio partneriai': 115,
-  Rėmėjai: 105,
+  'Generaliniai rėmėjai': 125,
+  'Rėmėjai': 115,
+  'Renginio partneriai': 105,
+  'Informaciniai partneriai': 105,
 }
 
 const { class: className, img, height, alt = 'Sponsor logo', tier } = Astro.props as Props

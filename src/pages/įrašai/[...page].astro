@@ -6,7 +6,7 @@ import PageHeader from '@components/PageHeader.astro'
 import { Card, Pagination } from 'accessible-astro-components'
 import type { PaginateFunction, Page } from 'astro'
 
-import Logo from '@assets/images/LitMO.svg'
+import Logo from '@public/LitMO.svg'
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   // Load and sort entries by pubDate in descending order
