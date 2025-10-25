@@ -25,6 +25,33 @@ interface Props {
 
 const { page } = Astro.props as Props
 
+const postImages = import.meta.glob('../../assets/images/**/*.{png,jpg,jpeg,gif,svg,webp,avif}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+const resolvePostImage = (raw?: string | null): string | null => {
+  if (!raw) return null
+  const normalized = raw.replace(/\\/g, '/').trim()
+  if (!normalized) return null
+
+  if (normalized.startsWith('/')) {
+    return normalized
+  }
+
+  if (normalized.startsWith('src/assets/')) {
+    const key = `../../${normalized.slice(4)}`
+    return postImages[key] ?? null
+  }
+
+  if (normalized.startsWith('assets/')) {
+    const key = `../../${normalized}`
+    return postImages[key] ?? null
+  }
+
+  return normalized
+}
+
 // Helpers
 const formatDate = (d?: Date | null) => (d ? d.toLocaleDateString('lt-LT') : null)
 const totalPages = Math.ceil(page.total / page.size)
@@ -47,7 +74,8 @@ const currentPage = String(page.currentPage)
             const updatedDate = formatDate(post.data.updated ?? null)
             const footerText = updatedDate ? `${publishedDate} • Atnaujinta ${updatedDate}` : publishedDate
             // Prefer per-post image from frontmatter; fall back to site logo
-            const imageComp = post.data.image ?? Logo
+            const resolvedImage = resolvePostImage(post.data.image ?? null)
+            const imageComp = resolvedImage ?? Logo
             return (
               <li>
                 <Card
