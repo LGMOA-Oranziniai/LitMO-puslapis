@@ -37,15 +37,18 @@ jobs:
         uses: actions/deploy-pages@v4
   
   notify:
-    needs: deploy
+    needs: [build, deploy]
     runs-on: ubuntu-latest
     if: always()
+    env:
+      # compute overall status: 'success' only if both build and deploy were 'success'
+      OVERALL_STATUS: ${{ needs.build.result == 'success' && needs.deploy.result == 'success' && 'success' || 'failure' }}
     steps:
       - name: Notify results to Discord
         uses: sarisia/actions-status-discord@v1.15.4
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          status: ${{ job.status }}
+          status: ${{ env.OVERALL_STATUS }}
           title: "${{ github.repository }} Deployment"
-          color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
+          color: ${{ env.OVERALL_STATUS == 'success' && '0x00ff00' || '0xff0000' }}
           username: "LitMO CI"
