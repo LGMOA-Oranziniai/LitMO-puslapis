@@ -15,4 +15,4 @@ content:
       - { name: published, label: Paskelbimo data, type: date, required: true }
       - { name: image, label: Paveiksliukas, type: string }
       - { name: updated, label: Redagavimo data, type: date }
-      - { name: body, label: Įrašo tekstas, type: rich-text }
+      - { name: body, label: Įrašo tekstas, type: text }
