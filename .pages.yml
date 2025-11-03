@@ -1,0 +1,17 @@
+media:
+  input: public
+  output: /
+content:
+  - name: irasai
+    label: Įrašai
+    type: collection
+    path: src/content/irasai
+    view:
+      fields: [ title, published ]
+    fields:
+      - { name: title, label: Antraštė, type: string, required: true }
+      - { name: description, label: Trumpas aprašymas, type: string }
+      - { name: published, label: Paskelbimo data, type: date, required: true }
+      - { name: image, label: Paveiksliukas, type: string }
+      - { name: updated, label: Redagavimo data, type: date }
+      - { name: body, label: Įrašo tekstas, type: rich-text }
