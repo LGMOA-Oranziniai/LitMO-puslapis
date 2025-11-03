@@ -11,8 +11,8 @@ content:
     filename: '{year}-{month}-{day}-{primary}.mdx'
     fields:
       - { name: title, label: Antraštė, type: string, required: true }
-      - { name: description, label: Trumpas aprašymas, type: string }
       - { name: published, label: Paskelbimo data, type: date, required: true }
-      - { name: image, label: Paveiksliukas, type: string }
-      - { name: updated, label: Redagavimo data, type: date }
+      - { name: description, label: "Trumpas aprašymas (optional, tekstas po antrašte)", type: string }
+      - { name: image, label: "Paveiksliukas (optional, LitMO logo by default)", type: string }
+      - { name: updated, label: Redagavimo data (optional), type: date }
       - { name: body, label: Įrašo tekstas, type: text }
