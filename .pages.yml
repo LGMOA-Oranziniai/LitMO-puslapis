@@ -8,7 +8,7 @@ content:
     path: src/content/irasai
     view:
       fields: [ title, published ]
-    filename: '{year}-{month}-{day}-{primary}.mdx'
+    filename: '{primary}.mdx'
     fields:
       - { name: title, label: Antraštė, type: string, required: true }
       - { name: published, label: Paskelbimo data, type: date, required: true }
