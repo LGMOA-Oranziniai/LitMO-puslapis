@@ -4,10 +4,12 @@ import Hero from '@components/Hero.astro'
 import ExternalLink from '@components/ExternalLink.astro'
 import SponsorGroup from '@components/SponsorGroup.astro'
 
+import SAM from '@assets/images/sponsors/sponsor_SAM.png'
 import amgen from '@assets/images/sponsors/sponsor_amgen.png'
 import abbvie from '@assets/images/sponsors/sponsor_abbvie.png'
 import ABfondas from '@assets/images/sponsors/sponsor_ABfondas.png'
 import IFPA from '@assets/images/sponsors/sponsor_IFPA.png'
+import reab from '@assets/images/sponsors/sponsor_reab.png'
 import abromiskiu from '@assets/images/sponsors/sponsor_abromiskiu.png'
 import sapiens from '@assets/images/sponsors/sponsor_sapiens.png'
 import uk from '@assets/images/sponsors/sponsor_UK.png'
@@ -19,10 +21,12 @@ import biosa from '@assets/images/sponsors/sponsor_biosa.png'
 
 
 const sponsorsList = [
+  { href: 'https://sam.lrv.lt/lt/', img: SAM, alt: 'Lietuvos respublikos sveikatos apsaugos ministerija', tier: 'Renginį globoja' },
   { href: 'https://www.amgen.com/', img: amgen, alt: 'Amgen', tier: 'Generaliniai rėmėjai' },
   { href: 'https://www.abbvie.com/', img: abbvie, alt: 'AbbVie', tier: 'Generaliniai rėmėjai' },
   { href: 'https://abfondas.lt/', img: ABfondas, alt: 'Ateities biomedicinos fondas', tier: 'Generaliniai rėmėjai' },
   { href: 'https://www.ifpa.lt/', img: IFPA, alt: 'Inovatyvios farmacijos pramonės asociacija', tier: 'Generaliniai rėmėjai' },
+  { href: 'https://www.rehabilitation.lt/', img: reab, alt: 'Nacionalinė sanatorijų ir reabilitacijos įstaigų asociacija', tier: 'Pagrindiniai rėmėjai' },
   { href: 'https://www.abromiskes.lt/', img: abromiskiu, alt: 'Abromiškių reabilitacijos ligoninė', tier: 'Rėmėjai' },
   { href: 'https://www.sapiens.lt/', img: sapiens, alt: 'Sapiens', tier: 'Rėmėjai' },
   { href: 'https://www.utenos-kolegija.lt/', img: uk, alt: 'Utenos kolegija', tier: 'Rėmėjai' },

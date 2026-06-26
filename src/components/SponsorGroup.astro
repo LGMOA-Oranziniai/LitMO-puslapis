@@ -1,7 +1,7 @@
 ---
 import SponsorImage from '@components/SponsorImage.astro'
 
-type Tier = 'Generaliniai rėmėjai' | 'Renginio partneriai' | 'Rėmėjai' | "Informaciniai partneriai"
+type Tier = 'Renginį globoja' | 'Generaliniai rėmėjai' | 'Pagrindiniai rėmėjai' | 'Renginio partneriai' | 'Rėmėjai' | "Informaciniai partneriai"
 
 interface SponsorItem {
   href: string
@@ -18,7 +18,7 @@ interface Props {
   description?: string
 }
 
-const defaultOrder: Tier[] = ['Generaliniai rėmėjai', 'Rėmėjai', 'Renginio partneriai', "Informaciniai partneriai"]
+const defaultOrder: Tier[] = ['Renginį globoja', 'Generaliniai rėmėjai', 'Pagrindiniai rėmėjai', 'Rėmėjai', 'Renginio partneriai', "Informaciniai partneriai"]
 
 const {
   sponsors = [],
@@ -59,6 +59,7 @@ for (const s of sponsors) {
           <div
             class:list={[
               'sponsor-grid',
+              tier === 'Renginį globoja' && 'sponsor-grid--xl',
               tier === 'Generaliniai rėmėjai' && 'sponsor-grid--xl',
               tier === 'Renginio partneriai' && 'sponsor-grid--lg',
             ]}
