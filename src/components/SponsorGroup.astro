@@ -87,19 +87,23 @@ for (const s of sponsors) {
   }
 
   .sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: var(--space-l, 2rem);
+    --sponsor-width: 160px;
   }
   .sponsor-grid--lg {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    --sponsor-width: 200px;
   }
   .sponsor-grid--xl {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    --sponsor-width: 240px;
   }
 
   .sponsor-card {
     display: block;
+    flex: 0 1 var(--sponsor-width);
+    max-width: 100%;
   }
 </style>
