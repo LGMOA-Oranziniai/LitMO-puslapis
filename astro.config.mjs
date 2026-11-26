@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
-import compress from 'astro-compress'
 import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'url'
@@ -8,8 +7,8 @@ import { fileURLToPath } from 'url'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://litmo.lgmoa.lt',
-  integrations: [mdx(), icon(), compress()],
+  site: 'https://litmo.olimpiados.lt',
+  integrations: [mdx(), icon()],
   vite: {
     css: {
       preprocessorOptions: {
