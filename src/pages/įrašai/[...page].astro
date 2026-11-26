@@ -54,7 +54,7 @@ const resolvePostImage = (raw?: string | null): string | null => {
 
 // Helpers
 const formatDate = (d?: Date | null) => (d ? d.toLocaleDateString('lt-LT') : null)
-const totalPages = Math.ceil(page.total / page.size)
+const totalPages = page.lastPage
 const firstPage = page.url.prev ? '/įrašai' : null
 const lastPage = page.url.next ? `/įrašai/${totalPages}` : null
 const currentPage = String(page.currentPage)
@@ -99,7 +99,9 @@ const currentPage = String(page.currentPage)
           lastPage={lastPage}
           currentPage={currentPage}
           totalPages={`${totalPages}`}
-          ariaLabel="Blog pagination"
+          ariaLabel="Įrašų puslapiai"
+          renderProgress={({ currentPage, totalPages }) => `${currentPage} puslapis iš ${totalPages}`}
+          renderPageLabel={({ page }) => `Pereiti į ${page} puslapį`}
         />
       </div>
     </div>
