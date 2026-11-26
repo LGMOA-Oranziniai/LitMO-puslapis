@@ -3,6 +3,22 @@ import Navigation from '../components/Navigation.astro'
 import { DarkMode, SkipLink } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
+const links = [
+  { href: '/', label: 'Pradžia' },
+  { href: '/apie/', label: 'Apie' },
+  { href: '/įrašai/', label: 'Įrašai' },
+  { href: '/duk/', label: 'DUK' },
+]
+
+const withTrailingSlash = (path: string) => path.endsWith('/') ? path : `${path}/`
+const currentPath = withTrailingSlash(Astro.url.pathname)
+
+function currentLink(href: string) {
+  const path = new URL(href, Astro.url).pathname
+  if (currentPath === path) return 'page'
+  if (path !== '/' && currentPath.startsWith(path)) return 'location'
+}
+
 /**
  * Header Component
  *
@@ -11,20 +27,11 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <header>
-  <SkipLink />
+  <SkipLink text="Pereiti prie pagrindinio turinio" />
   <Navigation>
-    <li class="menu-item">
-      <a href="/">Pradžia</a>
-    </li>
-    <li class="menu-item">
-      <a href="/apie/">Apie</a>
-    </li>
-    <li class="menu-item">
-      <a href="/įrašai/">Įrašai</a>
-    </li>
-    <li class="menu-item">
-      <a href="/duk/">DUK</a>
-    </li>
+    {links.map(({ href, label }) => (
+      <li class="menu-item"><a href={href} aria-current={currentLink(href)}>{label}</a></li>
+    ))}
     <!-- <li class="menu-item highlight">
       <a href="https://forms.gle/68un9hhzhYMXGumu8" target="_blank" rel="noopener noreferrer">Registruotis</a>
     </li> -->
@@ -41,7 +48,7 @@ import { Icon } from 'astro-icon/components'
       </a>
     </li>
     <li class="menu-item type-icon animate-rotate">
-      <DarkMode>
+      <DarkMode label="Keisti spalvų režimą">
         <Icon name="lucide:moon" slot="light" />
         <Icon name="lucide:sun" slot="dark" />
       </DarkMode>
