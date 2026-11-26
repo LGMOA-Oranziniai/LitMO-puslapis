@@ -4,13 +4,11 @@ import '../assets/scss/index.scss'
 import SiteMeta from '../components/SiteMeta.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-//import { ClientRouter } from 'astro:transitions'
 
 const {
   title = 'LitMO',
   description = 'LitMO - Lietuvos moksleivių medicinos olimpiada',
-  url = Astro.site,
-  image = 'LitMO.svg',
+  image = '/LitMO.svg',
   author = 'LitMO komanda',
 } = Astro.props
 ---
@@ -24,14 +22,11 @@ const {
     <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
-
-    <!-- Enable Astro View Transitions for all browsers -->
-    <!-- <ClientRouter /> -->
+    <SiteMeta title={title} description={description} image={image} author={author} />
   </head>
   <body>
     <Header />
-    <main id="main-content" transition:animate="fade">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />

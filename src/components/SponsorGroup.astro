@@ -50,10 +50,10 @@ for (const s of sponsors) {
   {description && <p class="text-2xl">{description}</p>}
 
   {
-    order.map((tier: Tier) =>
+    order.map((tier, index) =>
       groups[tier]?.length ? (
-        <section class="sponsor-tier" data-tier={tier} aria-labelledby={`tier-${tier}`}>
-          <h3 id={`tier-${tier}`} class="tier-heading">
+        <section class="sponsor-tier" data-tier={tier} aria-labelledby={`sponsor-tier-${index}`}>
+          <h3 id={`sponsor-tier-${index}`} class="tier-heading">
             {tier}
           </h3>
           <div

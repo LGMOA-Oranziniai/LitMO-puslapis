@@ -27,7 +27,7 @@ const cssHeight = typeof rawHeight === 'number' ? `${rawHeight}px` : (rawHeight 
 ---
 
 <div class:list={['sponsor', className]} style={`--logo-h: ${cssHeight}`} data-tier={tier}>
-  <Image src={img} alt={alt} loading="lazy" decoding="async" class="sponsor_img" />
+  <Image src={img} width={Math.min(img.width, 480)} alt={alt} loading="lazy" decoding="async" class="sponsor_img" />
 </div>
 
 <style>
